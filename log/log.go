@@ -31,20 +31,20 @@ func logInternal(level LogLevel, format string, a ...any) {
 func Log(level LogLevel, format string, a ...any) { logInternal(level, format, a...) }
 
 // Log a message with "Debug" level
-func Debug(format string, a ...any) { logInternal(LOG_LEVEL_DEBUG, format, a...) }
+func Debug(format string, a ...any) { logInternal(LogLevelDebug, format, a...) }
 
 // Log a message with "Info" level
-func Info(format string, a ...any) { logInternal(LOG_LEVEL_INFO, format, a...) }
+func Info(format string, a ...any) { logInternal(LogLevelInfo, format, a...) }
 
 // Log a message with "Warning" level
-func Warning(format string, a ...any) { logInternal(LOG_LEVEL_WARNING, format, a...) }
+func Warning(format string, a ...any) { logInternal(LogLevelWarning, format, a...) }
 
 // Log a message with "Error" level
-func Error(format string, a ...any) { logInternal(LOG_LEVEL_ERROR, format, a...) }
+func Error(format string, a ...any) { logInternal(LogLevelError, format, a...) }
 
 // Log a message with "Critical" level. This will also interrupt the program once
 // the message is logged with an exit code of 1.
 func Critical(format string, a ...any) {
-	logInternal(LOG_LEVEL_CRITICAL, format, a...)
+	logInternal(LogLevelCritical, format, a...)
 	os.Exit(1)
 }

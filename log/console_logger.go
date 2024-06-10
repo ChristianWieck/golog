@@ -25,15 +25,15 @@ func RegisterConsoleLogger() {
 
 func logLevelToString(level LogLevel) string {
 	switch level {
-	case LOG_LEVEL_DEBUG:
+	case LogLevelDebug:
 		return "DEBUG"
-	case LOG_LEVEL_INFO:
+	case LogLevelInfo:
 		return "INFO"
-	case LOG_LEVEL_WARNING:
+	case LogLevelWarning:
 		return "WARNING"
-	case LOG_LEVEL_ERROR:
+	case LogLevelError:
 		return "ERROR"
-	case LOG_LEVEL_CRITICAL:
+	case LogLevelCritical:
 		return "CRITICAL"
 	}
 	return ""

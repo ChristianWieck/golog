@@ -10,7 +10,7 @@ type LogHandler interface {
 }
 
 func RegisterHandler(handler LogHandler) {
-	RegisterHandlerVerbosity(handler, LOG_LEVEL_DEBUG)
+	RegisterHandlerVerbosity(handler, LogLevelDebug)
 }
 
 func RegisterHandlerVerbosity(handler LogHandler, verbosity LogLevel) {

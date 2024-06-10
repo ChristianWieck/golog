@@ -5,11 +5,11 @@ import (
 )
 
 var colorMappings = map[LogLevel]*color.Color{
-	LOG_LEVEL_DEBUG:    color.New(color.Faint),
-	LOG_LEVEL_INFO:     color.New(color.FgWhite),
-	LOG_LEVEL_WARNING:  color.New(color.FgYellow),
-	LOG_LEVEL_ERROR:    color.New(color.FgHiRed),
-	LOG_LEVEL_CRITICAL: color.New(color.FgRed),
+	LogLevelDebug:    color.New(color.Faint),
+	LogLevelInfo:     color.New(color.FgWhite),
+	LogLevelWarning:  color.New(color.FgYellow),
+	LogLevelError:    color.New(color.FgHiRed),
+	LogLevelCritical: color.New(color.FgRed),
 }
 
 func logLevelToColor(l LogLevel) *color.Color {
