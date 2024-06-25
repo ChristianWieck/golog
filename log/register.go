@@ -1,5 +1,11 @@
 package log
 
+import (
+	"sync"
+)
+
+var handlerLock = sync.Mutex{}
+
 var logHandlers = []struct {
 	LogHandler
 	LogLevel
@@ -14,6 +20,8 @@ func RegisterHandler(handler LogHandler) {
 }
 
 func RegisterHandlerVerbosity(handler LogHandler, verbosity LogLevel) {
+	handlerLock.Lock()
+	defer handlerLock.Unlock()
 	logHandlers = append(logHandlers, struct {
 		LogHandler
 		LogLevel

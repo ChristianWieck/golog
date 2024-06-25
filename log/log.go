@@ -17,6 +17,8 @@ func logInternal(level LogLevel, format string, a ...any) {
 
 	msg := ""
 	msgFormatted := false
+	handlerLock.Lock()
+	defer handlerLock.Unlock()
 	for _, v := range logHandlers {
 		if level >= v.LogLevel {
 			if !msgFormatted {
