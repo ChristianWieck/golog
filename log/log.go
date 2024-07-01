@@ -2,7 +2,6 @@ package log
 
 import (
 	"fmt"
-	"os"
 	"runtime"
 )
 
@@ -48,5 +47,5 @@ func Error(format string, a ...any) { logInternal(LogLevelError, format, a...) }
 // the message is logged with an exit code of 1.
 func Critical(format string, a ...any) {
 	logInternal(LogLevelCritical, format, a...)
-	os.Exit(1)
+	panic(fmt.Sprintf(format, a...))
 }
