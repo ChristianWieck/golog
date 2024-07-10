@@ -6,13 +6,12 @@ import (
 
 type consoleLogger struct{}
 
-func (c consoleLogger) Handle(level LogLevel, msg string, details CallerDetails) error {
+func (c consoleLogger) Handle(level LogLevel, msg string, details LogDetails) error {
 	logLevelToColor(level).Printf(
-		"%s - [%s] %s#%d - %s\n",
+		"%s - [%s] %s - %s\n",
 		time.Now().Local().Format("2006-01-02 15:04:05"),
 		logLevelToString(level),
-		details.MethodName,
-		details.LineNumber,
+		details.LoggerName,
 		msg,
 	)
 	return nil

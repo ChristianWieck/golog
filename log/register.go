@@ -12,7 +12,7 @@ var logHandlers = []struct {
 }{}
 
 type LogHandler interface {
-	Handle(LogLevel, string, CallerDetails) error
+	Handle(LogLevel, string, LogDetails) error
 }
 
 func RegisterHandler(handler LogHandler) {
