@@ -37,7 +37,7 @@ func (l *Logger) logInternal(level LogLevel, format string, a ...any) {
 				msg = fmt.Sprintf(format, a...)
 				msgFormatted = true
 			}
-			v.Handle(level, msg, logDetails)
+			v.LogHandler.Handle(level, msg, logDetails)
 		}
 	}
 }
