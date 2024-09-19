@@ -22,6 +22,11 @@ func RegisterConsoleLogger() {
 	RegisterHandler(consoleLogger{})
 }
 
+// Register a log handler to print log messages with the given level or higher to stdout.
+func RegisterConsoleLoggerVerbosity(level LogLevel) {
+	RegisterHandlerVerbosity(consoleLogger{}, level)
+}
+
 func logLevelToString(level LogLevel) string {
 	switch level {
 	case LogLevelDebug:
