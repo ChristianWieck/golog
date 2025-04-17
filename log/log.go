@@ -14,27 +14,29 @@ func Create(name string) *Logger {
 }
 
 func (l *Logger) logInternal(level LogLevel, format string, a ...any) {
-	// Recover information about the caller
-	pc, file, no, ok := runtime.Caller(2) // We need to go two steps back
-	details := runtime.FuncForPC(pc)
 	var logDetails LogDetails
-	if ok {
-		logDetails = LogDetails{
-			LoggerName: l.name,
-			FileName:   file,
-			LineNumber: no,
-			MethodName: details.Name(),
-		}
-	}
-
 	msg := ""
 	msgFormatted := false
+
 	handlerLock.Lock()
 	defer handlerLock.Unlock()
 	for _, v := range logHandlers {
 		if level >= v.LogLevel {
 			if !msgFormatted {
 				msg = fmt.Sprintf(format, a...)
+
+				// Also collect the caller information
+				pc, file, no, ok := runtime.Caller(2) // We need to go two steps back
+				details := runtime.FuncForPC(pc)
+
+				if ok {
+					logDetails = LogDetails{
+						LoggerName: l.name,
+						FileName:   file,
+						LineNumber: no,
+						MethodName: details.Name(),
+					}
+				}
 				msgFormatted = true
 			}
 			v.LogHandler.Handle(level, msg, logDetails)
