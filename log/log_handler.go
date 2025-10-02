@@ -14,7 +14,7 @@ type handlerEntry struct {
 var logHandlers = []handlerEntry{}
 
 type LogHandler interface {
-	Handle(LogLevel, string, LogDetails) error
+	Handle(LogLevel, string, LogDetails)
 }
 
 func RegisterHandler(handler LogHandler) {

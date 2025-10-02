@@ -9,7 +9,7 @@ type testLogger struct {
 	t *testing.T
 }
 
-func (t testLogger) Handle(level LogLevel, msg string, details LogDetails) error {
+func (t testLogger) Handle(level LogLevel, msg string, details LogDetails) {
 	t.t.Logf(
 		"%s - [%s] %s - %s\n",
 		time.Now().Local().Format("2006-01-02 15:04:05.000"),
@@ -17,7 +17,6 @@ func (t testLogger) Handle(level LogLevel, msg string, details LogDetails) error
 		details.LoggerName,
 		msg,
 	)
-	return nil
 }
 
 // Register a log handler to print log messages to test output.
